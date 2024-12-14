@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  pull_request:
+    branches: ['main']
+  push:
+    branches: ['main']
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+
+      - run: go mod tidy
+
+      - uses: golangci/golangci-lint-action@v6
+        with:
+          version: 'v1.62'
+
+      - run: make test
+
+      - run: make build

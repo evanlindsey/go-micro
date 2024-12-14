@@ -7,9 +7,6 @@ endif
 # dev cmds
 .PHONY: tidy format lint test
 
-tidy:
-	go mod tidy
-
 format:
 	go fmt ./...
 

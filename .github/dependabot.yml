@@ -1,0 +1,27 @@
+version: 2
+
+updates:
+  - package-ecosystem: 'gomod'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'sunday'
+      time: '12:00'
+      timezone: 'America/Chicago'
+    groups:
+      direct-dependencies:
+        dependency-type: 'direct'
+      indirect-dependencies:
+        dependency-type: 'indirect'
+
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'sunday'
+      time: '12:00'
+      timezone: 'America/Chicago'
+    groups:
+      actions-deps:
+        patterns:
+          - '*'

@@ -1,6 +1,6 @@
 module github.com/evanlindsey/go-micro
 
-go 1.23.2
+go 1.23.4
 
 require (
 	entgo.io/ent v0.14.1
